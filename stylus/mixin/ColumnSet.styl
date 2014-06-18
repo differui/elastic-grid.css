@@ -1,0 +1,127 @@
+/* =====================================================================
+    elastic-grid
+
+    author: Bin-Rui Guan <differui#gmail.com>
+    (The MIT License)
+
+    Copyright (c) 2014 elastic.css
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+   ===================================================================== */
+
+@import './util'
+@import '../variable'
+
+$specifiedColumnSelectors = ()
+
+/*
+ * set column width and gap
+ *
+ * designate aliquots name or number set column gap
+ *
+ * $column number/name specific column length
+ * $level number level number for generate selector
+ * $gap number 
+ */
+$$Column($column, $level, $gap)
+  $type = typeof($column)
+
+  if $type is 'unit'
+    .col--{$column}of{$level}
+      width $gap
+    .col--o-{$column}of{$level}
+      margin-left $gap
+
+    // record selector
+    push($specifiedColumnSelectors, s('.col--%sof%s', $column, $level))
+  
+  if $type is 'ident'
+    .col--{$column}
+    .col--1of{$level}
+      width $gap
+
+    .col--o-{$column}
+    .col--o-1of{$level}
+      margin-left $gap
+
+    // record selector
+    push($specifiedColumnSelectors, s('.col--%s', $column))
+    push($specifiedColumnSelectors, s('.col--1of%s', $level))
+
+/*
+ * grid column set
+ *
+ * define columns in grid row
+ * designate modifer can change column feature
+ *
+ * 1. override flex basis
+ * 2. align-self not supported in old syntax eidtion so old Android device is unavaliable
+ */
+$$ColumnSet($division=$defaultDivision)
+
+  // $division is an integer greater than 0
+  ensure($division, 'unit')
+  error('$division is negative number') unless $division >= 1
+
+  $division = floor($division)
+
+  .col
+    order 0
+    flex auto
+    box-sizing border-box
+
+  // specific order
+  .col--first
+    order -1
+  .col--last
+    order 1
+
+  // align column according to corss axis /* 2 */
+  .col--top
+    align-self flex-start
+
+  .col--bottom
+    align-self flex-end
+
+  .col--middle
+    align-self center
+
+  .col--stretch
+    align-self stretch
+
+  .col--baseline
+    align-self baseline
+
+  // column size not in aliquots
+  for $level in 1..$division
+    for $column in 1..$level
+      $gap = unit(100 / $level, '%')
+
+      // filter aliquots column: 1-1, 1-2, 1-3, 1-4, 1-5 ...
+      if $level % $column isnt 0 and $column isnt 1
+        $$Column($column, $level, $$fixed($gap * $column, 4))
+
+  // column size in aliquots
+  for $column in $aliquots
+    $level = $column[0]
+    $name = $column[1]
+    $gap = $$fixed(unit(100 / $level, '%'), 4)
+
+    // set column width and gap
+    $$Column($name, $level, $gap)
+
+  // override default flex
+  if !$css3
+    {join(',\n', $specifiedColumnSelectors)}
+      flex none
+  else
+    $css3Selector = ()
+    for $level in 1...$division
+      push($css3Selector, s(".col[class*='col--%s']", $level))
+
+    {join(',\n', $css3Selector)}
+      flex none
