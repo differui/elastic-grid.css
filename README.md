@@ -1,4 +1,4 @@
-[elastic-grid-demo]: http://differui.github.io/elastic-grid.css/demo.html
+[elastic-grid-demo]: http://differui.github.io/elastic-grid.css/demo/demo.html
 
 Elastic Grid
 ===

@@ -1,4 +1,5 @@
-build
-node_modules
-elastic.sublime-project
-elastic.sublime-workspace
+/build
+/node_modules
+*.sublime-project
+*.sublime-workspace
+*.swp
