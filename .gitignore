@@ -1,4 +1,10 @@
-build
-node_modules
-elastic.sublime-project
-elastic.sublime-workspace
+/build
+/node_modules
+*.swp
+*.sublime-workspace
+*.sublime-project
+*.sublime-workspace
+*.map
+*.patch
+README.md
+Gruntfile.coffee
