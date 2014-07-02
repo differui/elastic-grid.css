@@ -2,7 +2,7 @@
   elastic v0.2.0
   elastic grid power by css3 flex box
 */
-/* =====================================================================
+/* =========================================================================
     elastic-grid
 
     author: Bin-Rui Guan <differui#gmail.com>
@@ -15,10 +15,9 @@
     The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
     THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-   ===================================================================== */
-/*
- * grid row
- */
+   ========================================================================= */
+/* grid row
+   ========================================================================= */
 .row {
   display: -webkit-box;
   display: -webkit-flex;
@@ -122,9 +121,8 @@
       -ms-flex: auto;
           flex: auto;
 }
-/*
- * grid col
- */
+/* grid column
+   ========================================================================= */
 .col {
   -webkit-box-ordinal-group: 1;
   -webkit-order: 0;
@@ -179,17 +177,73 @@
       -ms-flex-item-align: baseline;
           align-self: baseline;
 }
+/* init column width and gap
+     ======================================================================= */
+.col--1of1 {
+  width: 100%;
+}
+.col--o-1of1 {
+  margin-left: 100%;
+}
+.col--1of2 {
+  width: 50%;
+}
+.col--o-1of2 {
+  margin-left: 50%;
+}
+.col--2of2 {
+  width: 100%;
+}
+.col--o-2of2 {
+  margin-left: 100%;
+}
+.col--1of3 {
+  width: 33.3333%;
+}
+.col--o-1of3 {
+  margin-left: 33.3333%;
+}
 .col--2of3 {
   width: 66.6667%;
 }
 .col--o-2of3 {
   margin-left: 66.6667%;
 }
+.col--3of3 {
+  width: 100%;
+}
+.col--o-3of3 {
+  margin-left: 100%;
+}
+.col--1of4 {
+  width: 25%;
+}
+.col--o-1of4 {
+  margin-left: 25%;
+}
+.col--2of4 {
+  width: 50%;
+}
+.col--o-2of4 {
+  margin-left: 50%;
+}
 .col--3of4 {
   width: 75%;
 }
 .col--o-3of4 {
   margin-left: 75%;
+}
+.col--4of4 {
+  width: 100%;
+}
+.col--o-4of4 {
+  margin-left: 100%;
+}
+.col--1of5 {
+  width: 20%;
+}
+.col--o-1of5 {
+  margin-left: 20%;
 }
 .col--2of5 {
   width: 40%;
@@ -208,6 +262,12 @@
 }
 .col--o-4of5 {
   margin-left: 80%;
+}
+.col--5of5 {
+  width: 100%;
+}
+.col--o-5of5 {
+  margin-left: 100%;
 }
 .col--full,
 .col--1of1 {
@@ -249,30 +309,19 @@
 .col--o-1of5 {
   margin-left: 20%;
 }
-.col--full,
-.col--half,
-.col--third,
-.col--quarter,
-.col--quintile,
-.col--2of3,
-.col--3of4,
-.col--2of5,
-.col--3of5,
-.col--4of5,
-.col--1of1,
-.col--1of2,
-.col--1of3,
-.col--1of4,
-.col--1of5 {
+/* constraint specified column width
+     ======================================================================= */
+.col--full,.col--half,.col--third,.col--quarter,.col--quintile,.col--1of1,.col--1of2,.col--2of2,.col--1of3,.col--2of3,.col--3of3,.col--1of4,.col--2of4,.col--3of4,.col--4of4,.col--1of5,.col--2of5,.col--3of5,.col--4of5,.col--5of5 {
   -webkit-box-flex: 0;
   -webkit-flex: none;
      -moz-box-flex: 0;
       -ms-flex: none;
           flex: none;
 }
-/*
-   * debug
-   */
+/* debug style for demo page
+
+   set $debug a boolean value in variable.styl, prevent from injecting demo style into final lib
+   ========================================================================= */
 .demo {
   text-align: center;
   display: block;
