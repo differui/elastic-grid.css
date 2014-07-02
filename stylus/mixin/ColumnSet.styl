@@ -12,65 +12,26 @@
 
     THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    ===================================================================== */
-$css3Selector = ()
-$specifiedColumnSelectors = ()
-
-// init $specifiedColumnSelectors and $css3Selector
-// add $aliquots col name
-for $column in $aliquots
-  $aliquotsName = s('.col--%s', $column[1])
-
-  push($css3Selector, $aliquotsName)
-  push($specifiedColumnSelectors, $aliquotsName)
 
 /*
- * set column width and gap
- *
- * designate aliquots name or number set column gap
- *
- * $column number/name specific column length
- * $level number level number for generate selector
- * $gap number 
- */
-$$Column($column, $level, $gap)
-  $type = typeof($column)
-
-  if $type is 'unit'
-    .col--{$column}of{$level}
-      width $gap
-    .col--o-{$column}of{$level}
-      margin-left $gap
-
-    // record selector
-    push($specifiedColumnSelectors, s('.col--%sof%s', $column, $level))
-  
-  if $type is 'ident'
-    .col--{$column}
-    .col--1of{$level}
-      width $gap
-
-    .col--o-{$column}
-    .col--o-1of{$level}
-      margin-left $gap
-
-    // record selector
-    push($specifiedColumnSelectors, s('.col--1of%s', $level))
-
-/*
- * grid column set
- *
- * define columns in grid row
- * designate modifer can change column feature
- *
- * 1. override flex basis
- * 2. align-self not supported in old syntax eidtion so old Android device is unavaliable
- */
+   grid column set
+   
+   define columns in grid row
+   designate modifer can change column feature
+   
+   1. override flex basis
+   2. align-self not supported in old syntax eidtion so old Android device is unavaliable
+   
+   $division number how many columns in one row
+   ===================================================================== */
 $$ColumnSet($division=$defaultDivision)
 
   // $division is an integer greater than 0
   ensure($division, 'unit')
   error('$division is negative number') unless $division >= 1
 
+  $css3Columns = ()
+  $specifiedColumns = ()
   $division = floor($division)
 
   .col
@@ -100,16 +61,19 @@ $$ColumnSet($division=$defaultDivision)
   .col--baseline
     align-self baseline
 
-  // column size not in aliquots
+  /* init column width and gap
+     ======================================================================= */
+
+  // column without aliquot name
   for $level in 1..$division
     for $column in 1..$level
       $gap = unit(100 / $level, '%')
 
       // filter aliquots column: 1-1, 1-2, 1-3, 1-4, 1-5 ...
-      if $level % $column isnt 0 and $column isnt 1
-        $$Column($column, $level, $$fixed($gap * $column, 4))
+      // if $level % $column isnt 0 and $column isnt 1
+      $$Column($column, $level, $$fixed($gap * $column, 4))
 
-  // column size in aliquots
+  // column with aliquot name
   for $column in $aliquots
     $level = $column[0]
     $name = $column[1]
@@ -118,13 +82,32 @@ $$ColumnSet($division=$defaultDivision)
     // set column width and gap
     $$Column($name, $level, $gap)
 
-  // override default flex
-  if !$css3
-    {join(',\n', $specifiedColumnSelectors)}
+  /* constraint specified column width
+     ======================================================================= */
+
+  // columns with aliquot name
+  for $column in $aliquots
+    $aliquotName = $column[1]
+
+    push($css3Columns, s('.col--%s', $aliquotName))
+    push($specifiedColumns, s('.col--%s', $aliquotName))
+
+  // columns with numeric name
+  for $level in 1..$division
+    for $column in 1..$level
+
+      // if $level is 1 or $level isnt $column
+      push($specifiedColumns, s('.col--%sof%s', $column, $level))
+
+  // with css3 selector
+  for $level in 1...$division
+    push($css3Columns, s('.col[class*="col--%s"]', $level))
+
+  if $css3
+    {join(',', $css3Columns)}
       flex none
   else
-    for $level in 1...$division
-      push($css3Selector, s(".col[class*='col--%s']", $level))
-
-    {join(',\n', $css3Selector)}
+    {join(',', $specifiedColumns)}
       flex none
+
+

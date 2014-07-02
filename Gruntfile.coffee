@@ -42,7 +42,12 @@ module.exports = (grunt) ->
     watch:
       build:
         files: ['stylus/**/*.styl']
-        tasks: ['stylus:build', 'autoprefixer:build']
+        tasks: [
+          'stylus:debug'
+          'stylus:elastic'
+          'autoprefixer:debug'
+          'autoprefixer:elastic'
+        ]
 
   grunt.loadNpmTasks 'grunt-autoprefixer'
   grunt.loadNpmTasks 'grunt-contrib-clean'

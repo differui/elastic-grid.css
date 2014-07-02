@@ -1,4 +1,4 @@
-/* =========================================================================
+/* =====================================================================
     elastic-grid
 
     author: Bin-Rui Guan <differui#gmail.com>
@@ -11,25 +11,34 @@
     The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
     THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-   ========================================================================= */
+   ===================================================================== */
 
-@import 'utils/math'
-@import 'variable'
-@import 'mixin/Debug'
-@import 'mixin/Row'
-@import 'mixin/Column'
-@import 'mixin/ColumnSet'
+/*
+   set column width and gap
 
-/* grid row
-   ========================================================================= */
-$$Row()
+   designate aliquots name or number set column gap
 
-/* grid column
-   ========================================================================= */
-$$ColumnSet()
+   $column number/name specific column length
+   $level number level number for generate selector
+   $gap number 
+   ===================================================================== */
+$$Column($column, $level, $gap)
+  $type = typeof($column)
+  $specifiedColumnSelectors = ()
 
-/* debug style for demo page
+  if $type is 'unit'
+    .col--{$column}of{$level}
+      width $gap
+    .col--o-{$column}of{$level}
+      margin-left $gap
+  
+  if $type is 'ident'
+    .col--{$column}
+    .col--1of{$level}
+      width $gap
 
-   set $debug a boolean value in variable.styl, prevent from injecting demo style into final lib
-   ========================================================================= */
-$$Debug()
+    .col--o-{$column}
+    .col--o-1of{$level}
+      margin-left $gap
+
+  return $specifiedColumnSelectors
