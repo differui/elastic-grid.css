@@ -35,15 +35,15 @@ $$ColumnSet($division=$defaultDivision)
   $division = floor($division)
 
   .col
-    order 0
     flex 1
+    order 2
     box-sizing border-box
 
   // specific order
   .col--first
-    order -1
-  .col--last
     order 1
+  .col--last
+    order 3
 
   // align column according to corss axis /* 2 */
   .col--top

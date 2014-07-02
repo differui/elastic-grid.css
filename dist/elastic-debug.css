@@ -1,5 +1,5 @@
 /*
-  elastic v0.2.0
+  elastic v0.2.1
   elastic grid power by css3 flex box
 */
 /* =========================================================================
@@ -124,33 +124,33 @@
 /* grid column
    ========================================================================= */
 .col {
-  -webkit-box-ordinal-group: 1;
-  -webkit-order: 0;
-     -moz-box-ordinal-group: 1;
-      -ms-flex-order: 0;
-          order: 0;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
      -moz-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  -webkit-box-ordinal-group: 3;
+  -webkit-order: 2;
+     -moz-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 .col--first {
-  -webkit-box-ordinal-group: 0;
-  -webkit-order: -1;
-     -moz-box-ordinal-group: 0;
-      -ms-flex-order: -1;
-          order: -1;
-}
-.col--last {
   -webkit-box-ordinal-group: 2;
   -webkit-order: 1;
      -moz-box-ordinal-group: 2;
       -ms-flex-order: 1;
           order: 1;
+}
+.col--last {
+  -webkit-box-ordinal-group: 4;
+  -webkit-order: 3;
+     -moz-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
 }
 .col--top {
   -webkit-align-self: flex-start;
