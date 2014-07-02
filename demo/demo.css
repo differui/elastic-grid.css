@@ -14,3 +14,10 @@ code {
 .col--last > .demo {
   background-color: lightblue;
 }
+
+.demo input {
+  margin: 0;
+  width: 100%;
+  border: solid 1px #efefef;
+  box-sizing: border-box;
+}
