@@ -22,12 +22,13 @@ pow($base, $exponent)
 /*
  * Formats a number using fixed-point notation.
  *
- * $base   unit The number for formatting 
- * $digits unit The number of digits to appear after the decimal point
+ * $base   unit The number for formatting.
+ * $digits unit The number of digits to appear after the decimal point.
  */
 fixed($base, $digits)
   ensure($base,   'unit')
   ensure($digits, 'unit')
 
   $carry = pow(10, $digits)
+
   return round($base * $carry) / $carry

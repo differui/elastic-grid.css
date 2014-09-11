@@ -1,10 +1,12 @@
-/* ****************************************************************************
-   Generate grid with give gutter.
-
-   1. Old Android device not support flex-wrap here for advance devices
-   2. not supported in old syntax eidtion so old Android device is unavaliable
-   3. old Android device will only reverse order of flex-items
-  ************************************************************************** */
+// Generate grid with give gutter.
+// 
+// 1. old Android device not support flex-wrap here for advance devices
+//
+// 2. not supported in old syntax eidtion so old Android device is unavaliable
+//
+// 3. old Android device will only reverse order of flex-items
+//
+// $gutter number Given gutter value for gutter grid.
 
 mix_grid($gutter = $default_gutter)
 
@@ -15,6 +17,19 @@ mix_grid($gutter = $default_gutter)
 
   .g--inline
     display inline-flex
+
+  // establishes the main-axis
+  .g--row
+    flex-direction row
+
+  .g--row-reverse
+    flex-direction row-reverse
+
+  .g--column
+    flex-direction column
+
+  .g--column-reverse
+    flex-direction column-reverse
 
   // align main axis
   .g--main-start
@@ -48,20 +63,7 @@ mix_grid($gutter = $default_gutter)
   .g--cross-baseline
     align-items baseline
 
-  // establishes the main-axis
-  .g--row
-    flex-direction row
-
-  .g--row-reverse
-    flex-direction row-reverse
-
-  .g--column
-    flex-direction column
-
-  .g--column-reverse
-    flex-direction column-reverse
-
-  // wrap
+  // wrap: default grid is nowrap
   .g--wrap
     flex-wrap wrap
 

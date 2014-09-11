@@ -1,18 +1,16 @@
-/* ****************************************************************************
-   grid cell set
-   
-   define cells in grid row
-   designate modifier can change cell feature
-   
-   1. override flex basis
-   2. align-self not supported in old syntax eidtion so old Android device is unavaliable
-   
-   $division number how many cells in one row
-  ************************************************************************** */
+// Generate grid cell set with given division number.
+//
+// 1. set base order to 2 in order to
+//    make `order: 1` avaliable in old android device.
+//
+// 2. align-self not supported in old syntax eidtion
+//    so old Android device is unavaliable.
+//
+// $division number Specify cell number in one grid.
 
-mix_cell_set($division=$default_division)
+mix_cell_set($division = $default_division)
 
-  // $division is an integer greater than 0
+  // $division is an integer & greater than 0.
   ensure($division, 'unit')
   error('$division is negative number') unless $division >= 1
 
@@ -22,16 +20,17 @@ mix_cell_set($division=$default_division)
 
   .c
     flex 1
-    order 2
+    order 2 /* 1 */
     box-sizing border-box
 
-  // specific order
+  // specify order
   .c--first
     order 1
+
   .c--last
     order 3
 
-  // align cell according to corss axis /* 2 */
+  // align cell according to cross axis /* 2 */
   .c--start
     align-self flex-start
 

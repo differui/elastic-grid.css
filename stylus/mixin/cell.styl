@@ -1,14 +1,11 @@
-/* ****************************************************************************
-   Generate grid cell with width and gap.
-
-   $cell  unit/ident Aliquots name or number.
-   $level unit       Level number for generate selector.
-   $gap   unit 
-  ************************************************************************** */
+// Generate grid cell with width and gap.
+//
+// $cell  unit/ident Aliquots name or number.
+// $level unit       Level number for generate selector.
+// $gap   unit
 
 mix_cell($cell, $level, $gap)
   $type = typeof($cell)
-  $specified_cell_selectors = ()
 
   // common column .c--1of5   .c--3of5
   // offset column .c--o-1of5 .c--o-3of5
@@ -29,5 +26,3 @@ mix_cell($cell, $level, $gap)
     .c--o-{$cell}
     .c--o-1of{$level}
       margin-left $gap
-
-  return $specified_cell_selectors
