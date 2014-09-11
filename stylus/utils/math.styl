@@ -4,7 +4,7 @@
  * $base     unit The base number.
  * $exponent unit The exponent number.
  */
-$$pow($base, $exponent)
+pow($base, $exponent)
   ensure($base,     'unit')
   ensure($exponent, 'unit')
 
@@ -25,9 +25,9 @@ $$pow($base, $exponent)
  * $base   unit The number for formatting 
  * $digits unit The number of digits to appear after the decimal point
  */
-$$fixed($base, $digits)
+fixed($base, $digits)
   ensure($base,   'unit')
   ensure($digits, 'unit')
 
-  $carry = $$pow(10, $digits)
+  $carry = pow(10, $digits)
   return round($base * $carry) / $carry

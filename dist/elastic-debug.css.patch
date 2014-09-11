@@ -2,11 +2,11 @@ Index: dist/elastic-debug.css
 ===================================================================
 --- dist/elastic-debug.css
 +++ dist/elastic-debug.css
-@@ -18,10 +18,16 @@
-    ========================================================================= */
- /* grid row
-    ========================================================================= */
- .row {
+@@ -2,98 +2,206 @@
+   elastic v0.2.3
+   elastic grid power by css3 flex box
+ */
+ .g {
 +  display: -webkit-box;
 +  display: -webkit-flex;
 +  display: -moz-box;
@@ -18,13 +18,14 @@ Index: dist/elastic-debug.css
 -  flex-wrap: nowrap;
  /* 1 */
  }
- .row--gutter {
-   margin-left: -1em;
-@@ -29,72 +35,148 @@
- .row--gutter > .col {
-   padding-left: 1em;
+ .g--inline {
++  display: -webkit-inline-box;
++  display: -webkit-inline-flex;
++  display: -moz-inline-box;
++  display: -ms-inline-flexbox;
+   display: inline-flex;
  }
- .row--left {
+ .g--main-start {
 +  -webkit-box-pack: start;
 +  -webkit-justify-content: flex-start;
 +     -moz-box-pack: start;
@@ -32,7 +33,7 @@ Index: dist/elastic-debug.css
 +          justify-content: flex-start;
 -  justify-content: flex-start;
  }
- .row--right {
+ .g--main-end {
 +  -webkit-box-pack: end;
 +  -webkit-justify-content: flex-end;
 +     -moz-box-pack: end;
@@ -40,7 +41,7 @@ Index: dist/elastic-debug.css
 +          justify-content: flex-end;
 -  justify-content: flex-end;
  }
- .row--center {
+ .g--main-center {
 +  -webkit-box-pack: center;
 +  -webkit-justify-content: center;
 +     -moz-box-pack: center;
@@ -48,7 +49,7 @@ Index: dist/elastic-debug.css
 +          justify-content: center;
 -  justify-content: center;
  }
- .row--between {
+ .g--main-between {
 +  -webkit-box-pack: justify;
 +  -webkit-justify-content: space-between;
 +     -moz-box-pack: justify;
@@ -56,14 +57,14 @@ Index: dist/elastic-debug.css
 +          justify-content: space-between;
 -  justify-content: space-between;
  }
- .row--around {
+ .g--main-around {
 +  -webkit-justify-content: space-around;
 +      -ms-flex-pack: distribute;
 +          justify-content: space-around;
 -  justify-content: space-around;
  /* 2 */
  }
- .row--top {
+ .g--cross-start {
 +  -webkit-box-align: start;
 +  -webkit-align-items: flex-start;
 +     -moz-box-align: start;
@@ -71,7 +72,7 @@ Index: dist/elastic-debug.css
 +          align-items: flex-start;
 -  align-items: flex-start;
  }
- .row--bottom {
+ .g--cross-end {
 +  -webkit-box-align: end;
 +  -webkit-align-items: flex-end;
 +     -moz-box-align: end;
@@ -79,7 +80,7 @@ Index: dist/elastic-debug.css
 +          align-items: flex-end;
 -  align-items: flex-end;
  }
- .row--middle {
+ .g--cross-center {
 +  -webkit-box-align: center;
 +  -webkit-align-items: center;
 +     -moz-box-align: center;
@@ -87,7 +88,7 @@ Index: dist/elastic-debug.css
 +          align-items: center;
 -  align-items: center;
  }
- .row--stretch {
+ .g--cross-stretch {
 +  -webkit-box-align: stretch;
 +  -webkit-align-items: stretch;
 +     -moz-box-align: stretch;
@@ -95,7 +96,7 @@ Index: dist/elastic-debug.css
 +          align-items: stretch;
 -  align-items: stretch;
  }
- .row--baseline {
+ .g--cross-baseline {
 +  -webkit-box-align: baseline;
 +  -webkit-align-items: baseline;
 +     -moz-box-align: baseline;
@@ -103,7 +104,17 @@ Index: dist/elastic-debug.css
 +          align-items: baseline;
 -  align-items: baseline;
  }
- .row--reverse {
+ .g--row {
++  -webkit-box-orient: horizontal;
++  -webkit-box-direction: normal;
++  -webkit-flex-direction: row;
++     -moz-box-orient: horizontal;
++     -moz-box-direction: normal;
++      -ms-flex-direction: row;
++          flex-direction: row;
+-  flex-direction: row;
+ }
+ .g--row-reverse {
 +  -webkit-box-orient: horizontal;
 +  -webkit-box-direction: reverse;
 +  -webkit-flex-direction: row-reverse;
@@ -112,9 +123,40 @@ Index: dist/elastic-debug.css
 +      -ms-flex-direction: row-reverse;
 +          flex-direction: row-reverse;
 -  flex-direction: row-reverse;
- /* 3 */
  }
- .row--fit > .col {
+ .g--column {
++  -webkit-box-orient: vertical;
++  -webkit-box-direction: normal;
++  -webkit-flex-direction: column;
++     -moz-box-orient: vertical;
++     -moz-box-direction: normal;
++      -ms-flex-direction: column;
++          flex-direction: column;
+-  flex-direction: column;
+ }
+ .g--column-reverse {
++  -webkit-box-orient: vertical;
++  -webkit-box-direction: reverse;
++  -webkit-flex-direction: column-reverse;
++     -moz-box-orient: vertical;
++     -moz-box-direction: reverse;
++      -ms-flex-direction: column-reverse;
++          flex-direction: column-reverse;
+-  flex-direction: column-reverse;
+ }
+ .g--wrap {
++  -webkit-flex-wrap: wrap;
++      -ms-flex-wrap: wrap;
++          flex-wrap: wrap;
+-  flex-wrap: wrap;
+ }
+ .g--wrap-reverse {
++  -webkit-flex-wrap: wrap-reverse;
++      -ms-flex-wrap: wrap-reverse;
++          flex-wrap: wrap-reverse;
+-  flex-wrap: wrap-reverse;
+ }
+ .g--fit > .c {
 +  -webkit-box-flex: 1;
 +  -webkit-flex: auto;
 +     -moz-box-flex: 1;
@@ -122,9 +164,13 @@ Index: dist/elastic-debug.css
 +          flex: auto;
 -  flex: auto;
  }
- /* grid column
-    ========================================================================= */
- .col {
+ .g--gutter {
+   margin-left: -1em;
+ }
+ .g--gutter > .c {
+   padding-left: 1em;
+ }
+ .c {
 +  -webkit-box-flex: 1;
 +  -webkit-flex: 1;
 +     -moz-box-flex: 1;
@@ -142,7 +188,7 @@ Index: dist/elastic-debug.css
 -  order: 2;
 -  box-sizing: border-box;
  }
- .col--first {
+ .c--first {
 +  -webkit-box-ordinal-group: 2;
 +  -webkit-order: 1;
 +     -moz-box-ordinal-group: 2;
@@ -150,7 +196,7 @@ Index: dist/elastic-debug.css
 +          order: 1;
 -  order: 1;
  }
- .col--last {
+ .c--last {
 +  -webkit-box-ordinal-group: 4;
 +  -webkit-order: 3;
 +     -moz-box-ordinal-group: 4;
@@ -158,44 +204,44 @@ Index: dist/elastic-debug.css
 +          order: 3;
 -  order: 3;
  }
- .col--top {
+ .c--start {
 +  -webkit-align-self: flex-start;
 +      -ms-flex-item-align: start;
 +          align-self: flex-start;
 -  align-self: flex-start;
  }
- .col--bottom {
+ .c--end {
 +  -webkit-align-self: flex-end;
 +      -ms-flex-item-align: end;
 +          align-self: flex-end;
 -  align-self: flex-end;
  }
- .col--middle {
+ .c--center {
 +  -webkit-align-self: center;
 +      -ms-flex-item-align: center;
 +          align-self: center;
 -  align-self: center;
  }
- .col--stretch {
+ .c--stretch {
 +  -webkit-align-self: stretch;
 +      -ms-flex-item-align: stretch;
 +          align-self: stretch;
 -  align-self: stretch;
  }
- .col--baseline {
+ .c--baseline {
 +  -webkit-align-self: baseline;
 +      -ms-flex-item-align: baseline;
 +          align-self: baseline;
 -  align-self: baseline;
  }
- /* init column width and gap
+ /* init cell width and gap
       ======================================================================= */
- .col--1of1 {
-@@ -229,9 +311,13 @@
+ .c--1of1 {
+@@ -228,19 +336,27 @@
  }
- /* constraint specified column width
+ /* constraint specified cell width
       ======================================================================= */
- .col--full,.col--half,.col--third,.col--quarter,.col--quintile,.col--1of1,.col--1of2,.col--2of2,.col--1of3,.col--2of3,.col--3of3,.col--1of4,.col--2of4,.col--3of4,.col--4of4,.col--1of5,.col--2of5,.col--3of5,.col--4of5,.col--5of5 {
+ .c--full,.c--half,.c--third,.c--quarter,.c--quintile,.c--1of1,.c--1of2,.c--2of2,.c--1of3,.c--2of3,.c--3of3,.c--1of4,.c--2of4,.c--3of4,.c--4of4,.c--1of5,.c--2of5,.c--3of5,.c--4of5,.c--5of5 {
 +  -webkit-box-flex: 0;
 +  -webkit-flex: none;
 +     -moz-box-flex: 0;
@@ -203,20 +249,20 @@ Index: dist/elastic-debug.css
 +          flex: none;
 -  flex: none;
  }
- /* debug style for demo page
- 
-    set $elastic_debug a boolean value in variable.styl, prevent from injecting demo style into final lib
-@@ -241,9 +327,13 @@
+ .demo {
+   text-align: center;
    display: block;
    background-color: rgba(150,150,150,0.3);
-   padding: 0.8em 1em;
-   margin-bottom: 1em;
+   padding: 0.8em 0.5em;
 +  -webkit-border-radius: 3px;
 +     -moz-border-radius: 3px;
 +          border-radius: 3px;
 -  border-radius: 3px;
  }
- .row .row .demo {
+ .g {
+   margin-bottom: 1em;
+ }
+ .g .g {
    margin-bottom: 0;
  }
 +

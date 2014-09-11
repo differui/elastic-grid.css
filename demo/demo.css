@@ -2,9 +2,9 @@ code {
   color: lightblue
 }
 
-.row--top,
-.row--middle,
-.row--bottom {
+.g--cross-start,
+.g--cross-center,
+.g--cross-end {
   height: 150px;
 
   border-right: solid 5px lightblue;
