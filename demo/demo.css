@@ -1,23 +1,7 @@
-code {
-  color: lightblue
-}
-
-.row--top,
-.row--middle,
-.row--bottom {
-  height: 150px;
-
-  border-right: solid 5px lightblue;
-}
-
-.col--first > .demo,
-.col--last > .demo {
-  background-color: lightblue;
-}
-
-.demo input {
+input,
+button {
   margin: 0;
+  padding: 0;
   width: 100%;
-  border: solid 1px #efefef;
   box-sizing: border-box;
 }
