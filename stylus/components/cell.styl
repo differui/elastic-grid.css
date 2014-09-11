@@ -1,0 +1,35 @@
+// Cell
+//
+// 1. set base order to 2 in order to
+//    make `order: 1` avaliable in old android device.
+//
+// 2. align-self not supported in old syntax eidtion
+//    so old Android device is unavaliable.
+
+.c
+  flex 1
+  order 2 /* 1 */
+  box-sizing border-box
+
+// specify order
+.c--first
+  order 1
+
+.c--last
+  order 3
+
+// align cell according to cross axis /* 2 */
+.c--start
+  align-self flex-start
+
+.c--end
+  align-self flex-end
+
+.c--center
+  align-self center
+
+.c--stretch
+  align-self stretch
+
+.c--baseline
+  align-self baseline

@@ -1,21 +1,17 @@
-@import 'utils/math'
-@import 'variable'
-@import 'mixin/debug'
-@import 'mixin/grid'
-@import 'mixin/cell'
-@import 'mixin/cell-set'
+@import 'foundation/_config'
+@import 'foundation/_helper'
+@import 'foundation/_debug'
+@import 'foundation/_mixin'
+@import 'components/grid'
+@import 'components/cell'
 
-// turn on debug
 $elastic_debug                      = true
 
-// grid container
-mix_grid()
+.g--row
+  mix_cell_fixed($elastic_division, 'h')
 
-// grid cell
-mix_cell_set()
+.g--column
+  mix_cell_fixed($elastic_division, 'v')
 
-// debug style for demo page
-//
-//   set $elastic_debug a boolean value in variable.styl
-//   prevent from injecting demo style into final lib
+mix_cell_auto($elastic_division)
 mix_debug()

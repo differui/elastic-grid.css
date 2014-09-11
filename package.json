@@ -6,7 +6,7 @@
     "grunt": "~0.4.2"
   },
   "name": "elastic",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "elastic grid power by css3 flex box",
   "main": "index.js",
   "dependencies": {

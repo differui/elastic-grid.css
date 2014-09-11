@@ -1,0 +1,86 @@
+// Grid
+// 
+// 1. old Android device not support flex-wrap here for advance devices
+//
+// 2. not supported in old syntax eidtion so old Android device is unavaliable
+//
+// 3. old Android device will only reverse order of flex-items
+
+// create a flex box context
+.g
+  display flex
+  flex-wrap nowrap  /* 1 */
+
+.g--inline
+  display inline-flex
+
+// establishes the main-axis
+.g--row
+  flex-direction row
+
+.g--column
+  flex-direction column
+
+.g--reverse
+  &.g--row
+    flex-direction row-reverse
+
+  &.g--column
+    flex-direction column-reverse
+
+// align main axis
+.g--main-start
+  justify-content flex-start
+
+.g--main-end
+  justify-content flex-end
+
+.g--main-center
+  justify-content center
+
+.g--main-between
+  justify-content space-between
+
+.g--main-around
+  justify-content space-around  /* 2 */
+
+// align cross axis
+.g--cross-start
+  align-items flex-start
+
+.g--cross-end
+  align-items flex-end
+
+.g--cross-center
+  align-items center
+
+.g--cross-stretch
+  align-items stretch
+
+.g--cross-baseline
+  align-items baseline
+
+// wrap: default grid is nowrap
+.g--wrap
+  flex-wrap wrap
+
+.g--wrap-reverse
+  flex-wrap wrap-reverse
+
+// division cells in same width
+.g--fit > .c
+  flex auto
+
+// with gutter
+.g--gutter
+  &.g--row
+    margin-left $elastic_gutter * -1
+
+    > .c
+      padding-left $elastic_gutter
+
+  &.g--column
+    margin-top $elastic_gutter * -1
+
+    > .c
+      padding-top $elastic_gutter  

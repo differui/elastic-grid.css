@@ -10,8 +10,8 @@ code {
   border-right: solid 5px lightblue;
 }
 
-.col--first > .demo,
-.col--last > .demo {
+.c--first > .demo,
+.c--last > .demo {
   background-color: lightblue;
 }
 
@@ -20,4 +20,9 @@ code {
   width: 100%;
   border: solid 1px #efefef;
   box-sizing: border-box;
+}
+
+.g--column,
+.g--column-reverse {
+  height: 300px;
 }

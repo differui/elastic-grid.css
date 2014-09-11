@@ -1,0 +1,111 @@
+// Generate grid cell with width and length.
+//
+// $cell   unit/ident Aliquots name or number.
+// $level  unit       Level number for generate selector.
+// $length unit       Length of cell.
+// $axis   'h'/'v'    'h' represent 'horizontal' & 'v' represent 'vertical'.
+mix_cell($cell, $level, $length, $axis)
+
+  $type = typeof($cell)
+
+  // common column .c--1of5   .c--3of5
+  // offset column .c--o-1of5 .c--o-3of5
+  if $type is 'unit'
+    .c--{$cell}of{$level}
+      
+      if $axis is 'h'
+        width $length
+      
+      if $axis is 'v'
+        height $length
+
+    .c--o-{$cell}of{$level}
+      if $axis is 'h'
+        margin-left $length
+
+      if $axis is 'v'
+        margin-top $length
+  
+  // common column .c--half   .c--1of5
+  // offset column .c--o-half .c--o-1of5
+  if $type is 'ident'
+    .c--{$cell}
+    .c--1of{$level}
+      
+      if $axis is 'h'
+        width $length
+
+      if $axis is 'v'
+        height $length
+
+    .c--o-{$cell}
+    .c--o-1of{$level}
+      
+      if $axis is 'h'
+        margin-left $length
+
+      if $axis is 'v'
+        margin-top $length
+
+// Generate grid cell set with given division number.
+//
+// $division number Specify cell number in one grid.
+// $axis     ident  'h' or 'v'.
+mix_cell_fixed($division, $axis)
+
+  // $division is an integer & greater than 0.
+  ensure($division, 'unit')
+  error('$division is negative number') unless $division >= 1
+
+  // cell without aliquot name
+  for $level in 1..$division
+    for $cell in 1..$level
+      $single = unit(100 / $level, '%')
+      $multi  = fixed($single * $cell, 4)
+
+      mix_cell($cell, $level, $multi, $axis)
+
+  // cell with aliquot name
+  for $cell in $aliquots
+    $level  = $cell[0]
+    $name   = $cell[1]
+    $single = fixed(unit(100 / $level, '%'), 4)
+
+    mix_cell($name, $level, $single, $axis)
+
+
+mix_cell_auto($division)
+
+  // $division is an integer & greater than 0.
+  ensure($division, 'unit')
+  error('$division is negative number') unless $division >= 1
+
+  $css3-selector  = ()
+  $group-selector = ()
+  $division       = floor($division)
+
+  // cells with aliquot name
+  for $cell in $aliquots
+    $aliquot_name = $cell[1]
+
+    push($css3-selector, s('.c--%s', $aliquot_name))
+    push($group-selector, s('.c--%s', $aliquot_name))
+
+  // cells with numeric name
+  for $level in 1..$division
+    for $cell in 1..$level
+
+      // if $level is 1 or $level isnt $cell
+      push($group-selector, s('.c--%sof%s', $cell, $level))
+
+  // cells with css3 selector
+  for $level in 1..$division
+    push($css3-selector, s('.c[class*="c--%s"]', $level))
+
+  if $elastic_css3
+    {join(',', $css3-selector)}
+      flex none
+
+  else
+    {join(',', $group-selector)}
+      flex none

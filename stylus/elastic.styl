@@ -1,18 +1,9 @@
-@import 'utils/math'
-@import 'variable'
-@import 'mixin/debug'
-@import 'mixin/grid'
-@import 'mixin/cell'
-@import 'mixin/cell-set'
+@import 'foundation/_config'
+@import 'foundation/_helper'
+@import 'foundation/_mixin'
 
-// grid container
+@import 'components/grid'
+@import 'components/cell'
+
 mix_grid()
-
-// grid cell
 mix_cell_set()
-
-// debug style for demo page
-//
-//   set $elastic_debug a boolean value in variable.styl
-//   prevent from injecting demo style into final lib
-mix_debug()
