@@ -1,5 +1,5 @@
 // Grid
-// 
+//
 // 1. old Android device not support flex-wrap here for advance devices
 //
 // 2. not supported in old syntax eidtion so old Android device is unavaliable
@@ -18,14 +18,14 @@
 .g--row
   flex-direction row
 
-.g--column
+.g--col
   flex-direction column
 
 .g--reverse
   &.g--row
     flex-direction row-reverse
 
-  &.g--column
+  &.g--col
     flex-direction column-reverse
 
 // align main axis
@@ -79,9 +79,6 @@
     > .c
       padding-left $elastic_gutter
 
-  &.g--column
+  &.g--col
     > .c
       margin-bottom $elastic_gutter
-
-    > .c:last-child
-      margin-bottom 0

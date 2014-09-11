@@ -1,29 +1,7 @@
-code {
-  color: lightblue
-}
-
-.g--cross-start,
-.g--cross-center,
-.g--cross-end {
-  height: 150px;
-
-  border-right: solid 5px lightblue;
-}
-
-.c--first > .demo,
-.c--last > .demo {
-  background-color: lightblue;
-}
-
-.demo input {
+input,
+button {
   margin: 0;
+  padding: 0;
   width: 100%;
-  border: solid 1px #efefef;
   box-sizing: border-box;
-}
-
-.g--column {
-  height: 300px;
-  background-color: lightgreen;
-  margin-bottom: 1em
 }
