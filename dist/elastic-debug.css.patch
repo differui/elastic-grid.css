@@ -3,7 +3,7 @@ Index: dist/elastic-debug.css
 --- dist/elastic-debug.css
 +++ dist/elastic-debug.css
 @@ -2,66 +2,146 @@
-   elastic v0.2.3
+   elastic v0.3.0
    elastic grid power by css3 flex box
  */
  .g {
@@ -168,8 +168,8 @@ Index: dist/elastic-debug.css
    margin-left: -1em;
  }
 @@ -74,33 +154,61 @@
- .g--gutter.g--column > .c {
-   padding-top: 1em;
+ .g--gutter.g--column > .c:last-child {
+   margin-bottom: 0;
  }
  .c {
 +  -webkit-box-flex: 1;
@@ -239,9 +239,9 @@ Index: dist/elastic-debug.css
  .g--row .c--1of1 {
    width: 100%;
  }
-@@ -361,19 +469,27 @@
- .g--column .c--o-1of5 {
-   margin-top: 20%;
+@@ -296,20 +404,30 @@
+ .g--column .c--1of5 {
+   height: 20%;
  }
  .c--full,.c--half,.c--third,.c--quarter,.c--quintile,.c--1of1,.c--1of2,.c--2of2,.c--1of3,.c--2of3,.c--3of3,.c--1of4,.c--2of4,.c--3of4,.c--4of4,.c--1of5,.c--2of5,.c--3of5,.c--4of5,.c--5of5 {
 +  -webkit-box-flex: 0;
@@ -252,6 +252,10 @@ Index: dist/elastic-debug.css
 -  flex: none;
  }
  .demo {
++  -webkit-box-sizing: border-box;
++     -moz-box-sizing: border-box;
++          box-sizing: border-box;
+-  box-sizing: border-box;
    text-align: center;
    display: block;
    background-color: rgba(150,150,150,0.3);

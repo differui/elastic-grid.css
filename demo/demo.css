@@ -22,7 +22,8 @@ code {
   box-sizing: border-box;
 }
 
-.g--column,
-.g--column-reverse {
+.g--column {
   height: 300px;
+  background-color: lightgreen;
+  margin-bottom: 1em
 }
