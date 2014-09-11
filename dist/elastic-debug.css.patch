@@ -205,7 +205,7 @@ Index: dist/elastic-debug.css
  }
  /* debug style for demo page
  
-    set $debug a boolean value in variable.styl, prevent from injecting demo style into final lib
+    set $elastic_debug a boolean value in variable.styl, prevent from injecting demo style into final lib
 @@ -241,9 +327,13 @@
    display: block;
    background-color: rgba(150,150,150,0.3);

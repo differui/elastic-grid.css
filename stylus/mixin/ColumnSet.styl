@@ -30,7 +30,7 @@ $$ColumnSet($division=$default_division)
   ensure($division, 'unit')
   error('$division is negative number') unless $division >= 1
 
-  $css3Columns = ()
+  $elastic_css3Columns = ()
   $specifiedColumns = ()
   $division = floor($division)
 
@@ -89,7 +89,7 @@ $$ColumnSet($division=$default_division)
   for $column in $aliquots
     $aliquotName = $column[1]
 
-    push($css3Columns, s('.col--%s', $aliquotName))
+    push($elastic_css3Columns, s('.col--%s', $aliquotName))
     push($specifiedColumns, s('.col--%s', $aliquotName))
 
   // columns with numeric name
@@ -101,10 +101,10 @@ $$ColumnSet($division=$default_division)
 
   // with css3 selector
   for $level in 1...$division
-    push($css3Columns, s('.col[class*="col--%s"]', $level))
+    push($elastic_css3Columns, s('.col[class*="col--%s"]', $level))
 
-  if $css3
-    {join(',', $css3Columns)}
+  if $elastic_css3
+    {join(',', $elastic_css3Columns)}
       flex none
   else
     {join(',', $specifiedColumns)}

@@ -1,5 +1,5 @@
 /*
-  elastic v0.2.2
+  elastic v0.2.3
   elastic grid power by css3 flex box
 */
 /* =========================================================================
@@ -320,7 +320,7 @@
 }
 /* debug style for demo page
 
-   set $debug a boolean value in variable.styl, prevent from injecting demo style into final lib
+   set $elastic_debug a boolean value in variable.styl, prevent from injecting demo style into final lib
    ========================================================================= */
 .demo {
   text-align: center;
