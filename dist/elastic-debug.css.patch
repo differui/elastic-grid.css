@@ -3,7 +3,7 @@ Index: dist/elastic-debug.css
 --- dist/elastic-debug.css
 +++ dist/elastic-debug.css
 @@ -2,66 +2,146 @@
-   elastic v0.3.0
+   elastic v0.3.1
    elastic grid power by css3 flex box
  */
  .g {

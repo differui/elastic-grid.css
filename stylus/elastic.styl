@@ -1,9 +1,15 @@
-@import 'foundation/_config'
-@import 'foundation/_helper'
-@import 'foundation/_mixin'
+@import 'foundation/variable'
+@import 'foundation/helper'
+@import 'foundation/mixin'
 
 @import 'components/grid'
 @import 'components/cell'
 
-mix_grid()
-mix_cell_set()
+.g--row
+  mix_cell_fixed($elastic_division, 'h')
+
+.g--col
+  mix_cell_fixed($elastic_division, 'v')
+
+mix_cell_auto($elastic_division)
+mix_debug()
