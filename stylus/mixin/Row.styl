@@ -14,17 +14,13 @@
    ===================================================================== */
 
 /*
-   grid row
+   Generate grid row with give gutter.
 
-   per line in grid system
-   designate modifer can change row feature
-
-   1. old Android device not support flex-wrap
-      it's here for anvance devices
+   1. Old Android device not support flex-wrap here for advance devices
    2. not supported in old syntax eidtion so old Android device is unavaliable
    3. old Android device will only reverse order of flex-items
    ===================================================================== */
-$$Row($gutter = $defaultGutter)
+$$Row($gutter = $default_gutter)
   .row
     display flex
     flex-wrap nowrap  /* 1 */

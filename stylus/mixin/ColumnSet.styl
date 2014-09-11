@@ -17,14 +17,14 @@
    grid column set
    
    define columns in grid row
-   designate modifer can change column feature
+   designate modifier can change column feature
    
    1. override flex basis
    2. align-self not supported in old syntax eidtion so old Android device is unavaliable
    
    $division number how many columns in one row
    ===================================================================== */
-$$ColumnSet($division=$defaultDivision)
+$$ColumnSet($division=$default_division)
 
   // $division is an integer greater than 0
   ensure($division, 'unit')
@@ -109,5 +109,3 @@ $$ColumnSet($division=$defaultDivision)
   else
     {join(',', $specifiedColumns)}
       flex none
-
-
