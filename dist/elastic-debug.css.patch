@@ -3,7 +3,7 @@ Index: dist/elastic-debug.css
 --- dist/elastic-debug.css
 +++ dist/elastic-debug.css
 @@ -2,66 +2,146 @@
-   elastic v0.3.1
+   elastic v0.3.2
    elastic grid power by css3 flex box
  */
  .g {
@@ -236,11 +236,11 @@ Index: dist/elastic-debug.css
 +          align-self: baseline;
 -  align-self: baseline;
  }
- .g--row .c--1of1 {
+ .g--row > .c--1of1 {
    width: 100%;
  }
 @@ -293,23 +401,31 @@
- .g--col .c--1of5 {
+ .g--col > .c--1of5 {
    height: 20%;
  }
  .c--full,.c--half,.c--third,.c--quarter,.c--quintile,.c--1of1,.c--1of2,.c--2of2,.c--1of3,.c--2of3,.c--3of3,.c--1of4,.c--2of4,.c--3of4,.c--4of4,.c--1of5,.c--2of5,.c--3of5,.c--4of5,.c--5of5 {

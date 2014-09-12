@@ -51,7 +51,7 @@ mix_cell($cell, $level, $length, $axis)
       // if $axis is 'v'
       //   margin-top $length
 
-// Generate grid cell set with given division number.
+// Generate grid cell with given division number.
 //
 // $division number Specify cell number in one grid.
 // $axis     ident  'h' or 'v'.
@@ -78,6 +78,9 @@ mix_cell_fixed($division, $axis)
     mix_cell($name, $level, $single, $axis)
 
 
+// Make grid calc width by width or height.
+//
+// $division number Specify cell number in one grid.
 mix_cell_auto($division)
 
   // $division is an integer & greater than 0.
