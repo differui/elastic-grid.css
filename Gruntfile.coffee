@@ -19,13 +19,12 @@ module.exports = (grunt) ->
           compress: false
         files:
           'build/elastic-debug.css': 'stylus/elastic-debug.styl'
-
-    autoprefixer:
+    postcss:
       options:
-        browsers: ['last 2000 versions']
-        cascade: true
-        diff: true
-        map: true
+        map: false
+        processors: [
+           require('autoprefixer')({browsers: 'last 2 versions'})
+        ]
       elastic:
         expand: true
         flatten: true
@@ -45,11 +44,11 @@ module.exports = (grunt) ->
         tasks: [
           'stylus:debug'
           'stylus:elastic'
-          'autoprefixer:debug'
-          'autoprefixer:elastic'
+          'postcss:debug'
+          'postcss:elastic'
         ]
 
-  grunt.loadNpmTasks 'grunt-autoprefixer'
+  grunt.loadNpmTasks 'grunt-postcss'
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-stylus'
   grunt.loadNpmTasks 'grunt-contrib-watch'
@@ -57,7 +56,7 @@ module.exports = (grunt) ->
   grunt.registerTask 'default', [
     'stylus:debug'
     'stylus:elastic'
-    'autoprefixer:debug'
-    'autoprefixer:elastic'
+    'postcss:debug'
+    'postcss:elastic'
     'watch:build'
   ]
